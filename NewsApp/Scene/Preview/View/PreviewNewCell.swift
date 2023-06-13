@@ -87,6 +87,7 @@ class PreviewNewCell: UITableViewCell {
             verticalStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
             verticalStackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10)
         ])
+        
     }
     
     func configureCell(title: String, description: String, date: String, image: UIImage) {

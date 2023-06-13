@@ -31,4 +31,5 @@ class NetworkController {
         
         return json.articles
     }
+    
 }

@@ -63,26 +63,6 @@ class NewsMainController: UITableViewController {
         group.wait()
         tableView.reloadData()
     }
-    
-//    func fetchImages() {
-//        let basicImage = UIImage(systemName: "photo.on.rectangle")!
-//        for new in news {
-//            let url = new.url
-//
-//            group.enter()
-//            parsingQueue.sync {
-//                URLSession.shared.dataTask(with: url) { data, response, error in
-//                    guard let data = data else { return }
-//
-//                    let image = UIImage(data: data)
-//                    self.images.append(image ?? basicImage)
-//                    self.group.leave()
-//                }.resume()
-//            }
-//        }
-//        group.wait()
-//        tableView.reloadData()
-//    }
 
     private func startIndication() {
         addChild(loadingView)
