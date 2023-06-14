@@ -10,7 +10,7 @@ import UIKit
 
 class NetworkController {
     
-    let url = "https://newsapi.org/v2/everything?q=apple&from=2023-06-11&to=2023-06-11&sortBy=popularity&apiKey=3cd00c5eb2234eafb18af98a5884a6bb"
+    let url = "https://newsapi.org/v2/everything?q=apple&from=2023-06-11&to=2023-06-11&sortBy=popularity&apiKey=3cd00c5eb2234eafb18af98a5884a6bb&page= 1"
     
     enum Errors: Error, LocalizedError {
         case itemNotFound
