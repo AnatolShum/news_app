@@ -13,6 +13,7 @@ class NewsMainController: UITableViewController {
     
     var news: [News] = []
     var images: [UIImage] = []
+    var page = 1
     
     let networkController = NetworkController()
     let loadingView = LoadingView()
@@ -28,7 +29,7 @@ class NewsMainController: UITableViewController {
        
         Task {
             do {
-                let loadednews = try await networkController.fetchNews()
+                let loadednews = try await networkController.fetchNews(page)
                 for new in loadednews {
                     news.append(new)
                     fetchImages(new: new)
@@ -108,6 +109,23 @@ class NewsMainController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if news.count - 1 == indexPath.row {
+            page += 1
+            Task {
+                do {
+                    let loadednews = try await networkController.fetchNews(page)
+                    for new in loadednews {
+                        news.append(new)
+                        fetchImages(new: new)
+                    }
+                } catch {
+                    print(error)
+                }
+            }
+        }
     }
 
 }

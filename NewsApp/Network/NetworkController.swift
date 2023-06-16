@@ -9,16 +9,15 @@ import Foundation
 import UIKit
 
 class NetworkController {
-    
-    let url = "https://newsapi.org/v2/everything?q=apple&from=2023-06-11&to=2023-06-11&sortBy=popularity&apiKey=3cd00c5eb2234eafb18af98a5884a6bb&page= 1"
-    
+
     enum Errors: Error, LocalizedError {
         case itemNotFound
         case imageDataMissing
         case urlNotFound
     }
    
-    func fetchNews() async throws -> [News] {
+    func fetchNews(_ page: Int) async throws -> [News] {
+        let url = "https://newsapi.org/v2/everything?q=apple&from=2023-06-11&to=2023-06-11&sortBy=popularity&apiKey=3cd00c5eb2234eafb18af98a5884a6bb&page= \(page)&pageSize=20"
         let urlComponents = URLComponents(string: url)!
         
         let (data, responce) = try await URLSession.shared.data(from: urlComponents.url!)
